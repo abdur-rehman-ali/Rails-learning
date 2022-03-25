@@ -5,4 +5,6 @@ class Stud < ApplicationRecord
     validates :name, length:{in: 2..6}
 
     validates :age, numericality:{only_integer:true}
+
+    validates :email, uniqueness:true
 end
