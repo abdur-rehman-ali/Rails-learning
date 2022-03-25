@@ -1,3 +1,9 @@
+class UserCallbacks
+    def self.after_destroy(user)
+        puts "After destroy called from another class #{user.name}"
+    end
+end
+
 class User < ApplicationRecord
     validates :name, presence:true
 
@@ -13,7 +19,8 @@ class User < ApplicationRecord
     after_create :test_after_create
 
     before_destroy :test_before_destroy
-    after_destroy :test_after_destroy
+    # after_destroy UserCallbacks.new
+    after_destroy UserCallbacks
 
     before_update :test_before_update
     after_update :test_after_update
@@ -79,3 +86,5 @@ class User < ApplicationRecord
             puts "After update called #{name}"
         end
 end
+
+
