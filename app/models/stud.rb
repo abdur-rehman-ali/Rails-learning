@@ -7,4 +7,7 @@ class Stud < ApplicationRecord
     validates :age, numericality:{only_integer:true}
 
     validates :email, uniqueness:true
+
+    validates :size, inclusion: { in: %w(small medium large),
+        message: "%{value} is not a valid size" }
 end
