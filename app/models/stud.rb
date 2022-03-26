@@ -18,8 +18,11 @@ class Stud < ApplicationRecord
     validates :email, uniqueness:true
 
     validates :size, inclusion: { in: %w(small medium large),
-        message: "%{value} is not a valid size" } ,allow_blank: true
+        message: "%{value} is not a valid size" } ,allow_blank: true , if: :size_true?
 
+    def size_true?
+        false
+    end
     # validates :size, exclusion: { in: %w(small medium large),
     #     message: "%{value} is reserved." }
 
