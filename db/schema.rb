@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_162218) do
+ActiveRecord::Schema.define(version: 2022_03_27_162424) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2022_03_27_162218) do
   create_table "courses_students", id: false, force: :cascade do |t|
     t.integer "course_id", null: false
     t.integer "student_id", null: false
+  end
+
+  create_table "developer_projects", force: :cascade do |t|
+    t.integer "developer_id"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_developer_projects_on_developer_id"
+    t.index ["project_id"], name: "index_developer_projects_on_project_id"
   end
 
   create_table "developers", force: :cascade do |t|
