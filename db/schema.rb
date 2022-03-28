@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_065919) do
+ActiveRecord::Schema.define(version: 2022_03_28_070158) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 2022_03_28_065919) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "manager_histories", force: :cascade do |t|
+    t.date "joining_date"
+    t.integer "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_manager_histories_on_manager_id"
   end
 
   create_table "managers", force: :cascade do |t|
